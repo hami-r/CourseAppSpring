@@ -8,9 +8,8 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "courses")
 public class CourseModel {
-
-    @GeneratedValue
     @Id
+    @GeneratedValue
     private int id;
     private String courseTitle;
     private String courseDescription;
