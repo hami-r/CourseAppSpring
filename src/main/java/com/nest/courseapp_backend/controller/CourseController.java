@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class CourseController {
 
@@ -17,8 +19,8 @@ public class CourseController {
     }
 
     @GetMapping("/view")
-    public String  viewCourse(){
-        return "Welcome to view course page";
+    public List<CourseModel> viewCourse(){
+        return (List<CourseModel>) dao.findAll();
     }
 
     @Autowired
