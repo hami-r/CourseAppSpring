@@ -1,6 +1,7 @@
 package com.nest.courseapp_backend.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -14,5 +15,10 @@ public class CourseController {
     @GetMapping("/view")
     public String  viewCourse(){
         return "Welcome to view course page";
+    }
+
+    @PostMapping("/add")
+    public String addCourse() {
+        return "Course added successfully";
     }
 }
