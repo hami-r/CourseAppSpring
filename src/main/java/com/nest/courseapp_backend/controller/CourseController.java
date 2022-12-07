@@ -11,6 +11,8 @@ import java.util.List;
 @RestController
 public class CourseController {
 
+    @Autowired
+    private CourseDao dao;
     @GetMapping("/")
     public String  homepage(){
         return "Welcome to my website";
@@ -21,8 +23,7 @@ public class CourseController {
         return (List<CourseModel>) dao.findAll();
     }
 
-    @Autowired
-    private CourseDao dao;
+
     @CrossOrigin(origins = "*")
     @PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
     public HashMap<String, String> addCourse(@RequestBody CourseModel c) {
@@ -35,5 +36,11 @@ public class CourseController {
         HashMap<String,String > map = new HashMap<>();
         map.put("status","success");
         return map;
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/search", consumes = "application/json",produces = "application/json")
+    public List<CourseModel> searchPage(@RequestBody CourseModel c){
+        return (List<CourseModel>) dao.searchCourse(c.getCourseTitle());
     }
 }
